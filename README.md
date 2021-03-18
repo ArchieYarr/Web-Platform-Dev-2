@@ -11,3 +11,6 @@ WORKING FEATURES
 
 FEATURES WITH ERRORS
 The data persistence function has a logic error, the IF loop I used skips into the ELSE for unkown reasons, I could not solve this issue but have left the code as is to demonstrate that I know the code to persist to a file but was not able to effectively implement it into the constructor of my Planner class
+
+UPDATE TO FEATURES WITH ERRORS
+I fixed the persistence issue 
