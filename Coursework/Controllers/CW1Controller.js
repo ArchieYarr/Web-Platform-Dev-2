@@ -1,5 +1,5 @@
 const plannerDAO = require('../Models/CW1Model'); 
-const db = new plannerDAO();
+const db = new plannerDAO('dbFilePath.db');
 db.init();
 
 exports.landing_page = function(req, res) {
