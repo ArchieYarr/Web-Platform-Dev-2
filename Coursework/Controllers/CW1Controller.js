@@ -48,4 +48,11 @@ exports.register = function(req, res){
     });
 }
 
+exports.post_new_entry = function(req, res) {
+    
+    
+    db.addGoal(req.body.Author);
+    res.redirect('/');
+   } 
+
 //comment

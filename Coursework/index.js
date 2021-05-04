@@ -3,9 +3,10 @@ const router = require('./routes/CW1routes');
 const path = require('path');
 const mustache = require('mustache-express');
 const app = express();
-
 const public = path.join(__dirname, 'public');
+const bodyParser = require("body-parser");
 
+app.use(express.urlencoded({extended: false})); 
 app.use('/', router);
 app.use(express.static(public));
 

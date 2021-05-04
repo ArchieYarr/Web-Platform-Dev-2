@@ -1,9 +1,10 @@
+<html>
 <head>
-{{>header}}
+{{header}}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/
 bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
-<body>
+<body class = "container">
  <h1>{{title}}</h1>
  <a href="/edit" class="btn btn-primary">
       Edit
@@ -15,13 +16,16 @@ bootstrap/4.4.1/css/bootstrap.min.css">
       remove
     </a>
  {{#entries}}
- <div>{{Training_day}}</div>
- <div>{{Training_excercise}} </div>
- <div>{{ Training_duration}} </div>
- <div> {{Training_week}}</div>
- <div> {{Training_date}}</div>
- <div> {{ID}}</div>
- <hr>{{/entries}}
+ <div class = "card-body">
+      <div class = "card-text">  
+          <div>{{Author}}</div>
+      </div>
+      <div class = "card-header">
+      Written by {{Author}}
+      </div>
+      </div>
+
+ {{/entries}}
  {{^entries}}no entries yet {{/entries}}
 </body>
 </html>

@@ -11,3 +11,6 @@ router.get("/edit",controller.edit);
 router.get("/remove", controller.remove);
 router.get("/login", controller.login);
 router.get("/register", controller.register);
+
+router.get('/add', controller.add);
+router.post('/add', controller.post_new_entry); 
