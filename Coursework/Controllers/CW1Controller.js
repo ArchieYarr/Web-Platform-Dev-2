@@ -55,4 +55,25 @@ exports.post_new_entry = function(req, res) {
     res.redirect('/');
    } 
 
+   exports.show_user_entries = function(req, res)
+   {
+       console.log('filtering author name', req.params.Author); 
+    
+       let user = req.params.Author;
+       db.getEntriesByUser(user).then((entries) => {
+       res.render('planner', {
+       'title': 'planner',
+       'entries': entries
+       });
+       }).catch((err) => {
+       console.log('error handling author posts', err);
+       }); 
+    
+    
+    }
+    exports.delete_entry = function(req, res) {
+        console.log('id in delete_entry', req.params.id);
+        res.redirect('/');
+        db.deleteEntry(req.params.id); 
+        } 
 //comment
