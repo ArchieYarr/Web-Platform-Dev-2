@@ -1,19 +1,128 @@
 <html lang="en">
 <head>
-{{header}}
+{{>header}}
 </head>
 <body class="container">
-<h2>Write a new Author</h2>
-<form method="post" role="form" action = "">
+<a href="/" class="btn btn-primary">
+      Planner
+    </a>
+<form method="post" role="form" >
+
  <div class="form-group">
     <label for="Author">Author</label>
     <input type="text" class="form-control" id="Author"
     name="Author" placeholder="Written by" required>
  </div>
  
+ <div class="form-group">
+    <label for="day_of_Week">Day of the Week</label>
+    <input type="text" class="form-control" id="day_of_week"
+    name="day_of_week" placeholder="day of the Week" required>
+ </div>
 
  <div class="form-group">
-    <input type="submit" value="Post entry" class="btn btn-primary">
+    <label for="goal_start_date">Goal Start Date</label>
+    <input type="text" class="form-control" id="Goal Start Date"
+    name="goal_start_date" placeholder="Start Date of the goals set" required>
+ </div>
+
+  <div class="form-group">
+    <label for="First Goal">Goal 1</label>
+    <input type="text" class="form-control" id="first_goal"
+    name="first_goal" placeholder="The First Goal of the Week" required>
+ </div>
+
+  <div class="form-group">
+    <label for="second_goal">Goal 2</label>
+    <input type="text" class="form-control" id="second_goal"
+    name="second_goal" placeholder="The Second Goal of the Week" required>
+ </div>
+
+  <div class="form-group">
+    <label for="third_goal">Goal 3</label>
+    <input type="text" class="form-control" id="third_goal"
+    name="third_goal" placeholder="The Third Goal of the Week" required>
+ </div>
+
+  <div class="form-group">
+    <label for="additional_goal">Additional Goals</label>
+    <input type="text" class="form-control" id="additional_goal"
+    name="additional_goal" placeholder="Any Additional Goals for the Week" required>
+ </div>
+
+  <div class="form-group">
+    <label for="first_goal_progress">Goal 1 progress</label>
+    <input type="text" class="form-control" id="first_goal_progress"
+    name="first_goal_progress" placeholder="Reps, distance or effort completed so far" required>
+ </div>
+
+<div class="form-group">
+    <label for="second_goal_progress">Goal 2 progress</label>
+    <input type="text" class="form-control" id="second_goal_progress"
+    name="second_goal_progress" placeholder="Reps, distance or effort completed so far" required>
+ </div>
+
+ <div class="form-group">
+    <label for="third_goal_progress">Goal 3 progress</label>
+    <input type="text" class="form-control" id="third_goal_progress"
+    name="third_goal_progress" placeholder="Reps, distance or effort completed so far" required>
+ </div>
+
+ <div class="form-group">
+    <label for="additional_goal_progress">Additional Goal progress</label>
+    <input type="text" class="form-control" id="additional_goal_progress"
+    name="additional_goal_progress" placeholder="Reps, distance or effort completed so far" required>
+ </div>
+
+ <div class="form-group">
+    <label for="goal_completion_date">Date of all goals being completed</label>
+    <input type="text" class="form-control" id="goal_completion_date"
+    name="goal_completion_date" placeholder="Day all goals were completed" required>
+ </div>
+
+ <div class="form-group">
+    <label for="all_goal_completion">All Goals Completion Status</label>
+    <input type="text" class="form-control" id="all_goal_completion"
+    name="all_goal_completion" placeholder="all goals, completed/incomplete/in progress" required>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="form-group">
+    <input type="submit" value="Add Goal" class="btn btn-primary">
  </div>
 </form>
 </body>
