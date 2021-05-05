@@ -85,7 +85,7 @@ addGoal(Author, published, day_of_week, goal_start_date, first_goal, second_goal
             reject(err);
             } else {
             resolve(entries);
-            console.log('getEntriesByUser returns: ', entries);
+            console.log('getEntriesProgress returns: ', entries);
             }
             })
             })

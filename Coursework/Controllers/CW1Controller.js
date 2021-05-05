@@ -76,8 +76,8 @@ exports.post_new_entry = function(req, res) {
    {
        console.log('filtering by goal completion', req.params.all_goal_completion); 
     
-       let user = req.params.all_goal_completion;
-       db.getEntriesProgress(user).then((entries) => {
+       let completion = req.params.all_goal_completion;
+       db.getEntriesProgress(completion).then((entries) => {
        res.render('planner', {
        'title': 'planner',
        'entries': entries
