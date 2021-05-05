@@ -51,26 +51,11 @@ exports.register = function(req, res){
 exports.post_new_entry = function(req, res) {
     
     
-    db.addGoal(req.body.Author, req.body.published, req.body.day_of_week, req.body.goal_start_date, req.body.first_goal, req.body.second_goal, req.body.third_goal, req.body.additional_goal, req.body.first_goal_progress, req.body.second_goal_progress, req.body.third_goal_progress, req.body.additional_goal_progress, req.body.goal_completion_date, req.body.all_goal_completion);
+    db.addGoal(req.body.Author, req.body.published, req.body.training_week, req.body.goal_start_date, req.body.first_goal, req.body.second_goal, req.body.third_goal, req.body.additional_goal, req.body.first_goal_progress, req.body.second_goal_progress, req.body.third_goal_progress, req.body.additional_goal_progress, req.body.goal_completion_date, req.body.all_goal_completion);
     res.redirect('/');
    } 
 
-   exports.show_user_entries = function(req, res)
-   {
-       console.log('filtering author name', req.params.Author); 
-    
-       let user = req.params.Author;
-       db.getEntriesByUser(user).then((entries) => {
-       res.render('planner', {
-       'title': 'planner',
-       'entries': entries
-       });
-       }).catch((err) => {
-       console.log('error handling author posts', err);
-       }); 
-    
-    
-    }
+  
 
     exports.show_user_completion = function(req, res)
    {
@@ -79,7 +64,7 @@ exports.post_new_entry = function(req, res) {
        let completion = req.params.all_goal_completion;
        db.getEntriesProgress(completion).then((entries) => {
        res.render('planner', {
-       'title': 'planner',
+       'title': 'Filtered Goal Progress',
        'entries': entries
        });
        }).catch((err) => {

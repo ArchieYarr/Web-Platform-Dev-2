@@ -10,7 +10,6 @@ router.get("/add",controller.add);
 router.get("/edit",controller.edit);
 router.get("/login", controller.login);
 router.get("/register", controller.register);
-router.get('/posts/:Author', controller.show_user_entries);
 router.get('/progress/:all_goal_completion', controller.show_user_completion);
 router.get('/add', controller.add);
 router.post('/add', controller.post_new_entry); 

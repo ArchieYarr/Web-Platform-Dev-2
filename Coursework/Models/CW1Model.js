@@ -37,11 +37,11 @@ getAllEntries(){
 })
 }
 
-addGoal(Author, published, day_of_week, goal_start_date, first_goal, second_goal, third_goal, additional_goal, first_goal_progress, second_goal_progress, third_goal_progress, additional_goal_progress, goal_completion_date, all_goal_completion) {
+addGoal(Author, published, training_week, goal_start_date, first_goal, second_goal, third_goal, additional_goal, first_goal_progress, second_goal_progress, third_goal_progress, additional_goal_progress, goal_completion_date, all_goal_completion) {
     var entry = {
     Author: Author,
     published: new Date().toISOString().split('T')[0],
-    day_of_week: day_of_week,
+    training_week: training_week,
     goal_start_date: goal_start_date,
     first_goal: first_goal,
     second_goal: second_goal,
@@ -64,18 +64,7 @@ addGoal(Author, published, day_of_week, goal_start_date, first_goal, second_goal
     })
     } 
 
-    getEntriesByUser(Author) {
-        return new Promise((resolve, reject) => {
-        this.db.find({ 'Author': Author }, function(err, entries) {
-        if (err) {
-        reject(err);
-        } else {
-        resolve(entries);
-        console.log('getEntriesByUser returns: ', entries);
-        }
-        })
-        })
-        } 
+   
 
 
         getEntriesProgress(all_goal_completion) {

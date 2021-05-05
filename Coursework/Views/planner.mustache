@@ -17,9 +17,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
       add
     </a>
   
-  <a href="/posts/{{all_goal_completion}}" class="btn btn-primary">
-      View incomplete goals
-    </a>
+  
     
  {{#entries}}
  <div class = "card-body">
@@ -27,34 +25,34 @@ bootstrap/4.4.1/css/bootstrap.min.css">
          
       </div>
       <div class = "card-header">
-      Written by <a href = '/posts/{{Author}}'>{{Author}}</a> 
+      Written by {{Author}}
      published on {{published}}
      <br>
-     Day of the Week:
-     {{day_of_week}}
+     Training Week:
+     {{training_week}}
      <br>
      Start date of Goals:
      {{goal_start_date}}
      <br>
-     Goal 1:
+    <b> Goal 1:</b>
      {{first_goal}}
      <br>
-     Goal 2:
+    <b> Goal 2:</b>
      {{second_goal}}
      <br>
-     Goal 3:
+    <b> Goal 3:</b>
      {{third_goal}}
      <br>
      Additional Goals:
      {{additional_goal}}
      <br>
-     Goal 1 Progress:
+    <b> Goal 1 Progress:</b>
      {{first_goal_progress}}
      <br>
-     Goal 2 Progress:
+    <b> Goal 2 Progress:</b>
      {{second_goal_progres}}
      <br>
-     Goal 3 progress:
+    <b> Goal 3 progress:</b>
      {{third_goal_progress}}
      <br>
      Additional Goals progress:
