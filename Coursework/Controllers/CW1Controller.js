@@ -71,6 +71,23 @@ exports.post_new_entry = function(req, res) {
     
     
     }
+
+    exports.show_user_completion = function(req, res)
+   {
+       console.log('filtering by goal completion', req.params.all_goal_completion); 
+    
+       let user = req.params.all_goal_completion;
+       db.getEntriesProgress(user).then((entries) => {
+       res.render('planner', {
+       'title': 'planner',
+       'entries': entries
+       });
+       }).catch((err) => {
+       console.log('error handling author posts', err);
+       }); 
+    
+    
+    }
     exports.delete_entry = function(req, res) {
         console.log('id in delete_entry', req.params.id);
         res.redirect('/');

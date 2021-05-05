@@ -7,14 +7,19 @@ bootstrap/4.4.1/css/bootstrap.min.css">
 <script src="https://kit.fontawesome.com/3625e3ab5a.js" crossorigin="anonymous"></script>
 </head>
 <body class = "container">
+
  <h1>{{title}}</h1>
+
  <a href="/edit" class="btn btn-primary">
       Edit
     </a>
     <a href="/add" class="btn btn-primary">
       add
     </a>
-    
+  
+  <a href="/posts/{{all_goal_completion}}" class="btn btn-primary">
+      View incomplete goals
+    </a>
     
  {{#entries}}
  <div class = "card-body">
@@ -59,7 +64,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
      {{goal_completion_date}}
      <br>
      All goals completion status:
-     {{all_goal_completion}}
+     <a href="/posts/{{all_goal_completion}}" >{{all_goal_completion}}</a>
     
       </div>
       </div>

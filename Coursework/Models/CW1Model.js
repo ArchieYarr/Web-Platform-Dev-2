@@ -77,6 +77,20 @@ addGoal(Author, published, day_of_week, goal_start_date, first_goal, second_goal
         })
         } 
 
+
+        getEntriesProgress(all_goal_completion) {
+            return new Promise((resolve, reject) => {
+            this.db.find({ 'all_goal_completion': all_goal_completion }, function(err, entries) {
+            if (err) {
+            reject(err);
+            } else {
+            resolve(entries);
+            console.log('getEntriesByUser returns: ', entries);
+            }
+            })
+            })
+            } 
+
         deleteEntry(id) {
             this.db.remove({_id: id}, {}, function(err, rem) {
             if (err) {
