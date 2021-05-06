@@ -19,7 +19,7 @@ exports.landing_page = function(req, res) {
 exports.add = function(req, res){
     res.render('addEntries', {
         'title': 'addEntries',
-        
+        'user': req.user
 });
 }
 
@@ -54,6 +54,7 @@ exports.post_new_entry = function(req, res) {
        db.getEntriesProgress(completion).then((entries) => {
        res.render('planner', {
        'title': 'Filtered Goal Progress',
+       
        'entries': entries
        });
        }).catch((err) => {
@@ -106,3 +107,7 @@ exports.post_new_user = function(req, res) {
     });
    } 
 
+   exports.logout = function(req, res) {
+    req.logout();
+    res.redirect("/");
+   }; 
