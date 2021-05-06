@@ -20,7 +20,15 @@ constructor(dbFilePath){
 
 
 init(){
-      
+      this.db.insert({
+    Author: 'Author',
+    training_week: 'training_week',
+    goal_start_date: 'goal_start_date',
+    goal: 'goal',
+    goal_progress: 'goal_progress',
+    goal_completion_date: 'goal_completion_date',
+    all_goal_completion: 'all_goal_completion'
+      });
 }
 
 getAllEntries(){
@@ -37,22 +45,16 @@ getAllEntries(){
 })
 }
 
-addGoal(Author, published, training_week, goal_start_date, first_goal, second_goal, third_goal, additional_goal, first_goal_progress, second_goal_progress, third_goal_progress, additional_goal_progress, goal_completion_date, all_goal_completion) {
+addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_completion_date, all_goal_completion) {
     var entry = {
     Author: Author,
-    published: new Date().toISOString().split('T')[0],
     training_week: training_week,
     goal_start_date: goal_start_date,
-    first_goal: first_goal,
-    second_goal: second_goal,
-    third_goal: third_goal,
-    additional_goal: additional_goal,
-    first_goal_progress: first_goal_progress,
-    second_goal_progres: second_goal_progress,
-    third_goal_progress: third_goal_progress,
-    additional_goal_progress: additional_goal_progress,
+    goal: goal,
+    goal_progress: goal_progress,
     goal_completion_date: goal_completion_date,
-    all_goal_completion: all_goal_completion
+    all_goal_completion: all_goal_completion,
+    published: new Date().toISOString().split('T')[0]
     }
     
     this.db.insert(entry, function(err, doc) {
@@ -79,6 +81,24 @@ addGoal(Author, published, training_week, goal_start_date, first_goal, second_go
             })
             })
             } 
+
+            getTrainingWeek(training_week) {
+                return new Promise((resolve, reject) => {
+                this.db.find({ training_week: training_week }, function(err, entries) {
+                if (err) {
+                reject(err);
+                } else {
+                resolve(entries);
+                console.log('trainingWeek returns: ', entries);
+                }
+                })
+                })
+                } 
+
+
+
+
+
 
         deleteEntry(id) {
             this.db.remove({_id: id}, {}, function(err, rem) {

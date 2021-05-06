@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 class UserDAO {
- constructor(dbFilePath) {
- if (dbFilePath) {
+ constructor(users) {
+ if (users) {
  //embedded
- this.db = new Datastore({ filename: dbFilePath, autoload: true });
+ this.db = new Datastore({ filename: users, autoload: true });
  } else {
 
  //in memory
@@ -60,6 +60,5 @@ class UserDAO {
  });
  }
 }
-const dao = new UserDAO();
-dao.init();
+const dao = new UserDAO('users.db');
 module.exports = dao;

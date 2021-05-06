@@ -3,7 +3,7 @@ const plannerDAO = require('../Models/CW1Model');
 const db = new plannerDAO('dbFilePath.db');
 
 const UserDAO = require('../Models/userModel'); 
-//const db = new UserDAO('dbFilePath.db');
+
 db.init();
 
 exports.landing_page = function(req, res) {
@@ -28,7 +28,17 @@ exports.edit = function(req, res){
         'title': 'editEntries',
         
 });
+
+
 }
+
+exports.sortWeek = function(req, res){
+    res.render('sortWeek', {
+        'title': 'Sort by Week',
+        
+});
+}
+
 exports.remove = function(req, res){
     res.render('removeEntries', {
         'title': 'removeEntries',
@@ -40,7 +50,7 @@ exports.remove = function(req, res){
 exports.post_new_entry = function(req, res) {
     
     
-    db.addGoal(req.body.Author, req.body.published, req.body.training_week, req.body.goal_start_date, req.body.first_goal, req.body.second_goal, req.body.third_goal, req.body.additional_goal, req.body.first_goal_progress, req.body.second_goal_progress, req.body.third_goal_progress, req.body.additional_goal_progress, req.body.goal_completion_date, req.body.all_goal_completion);
+    db.addGoal(req.body.Author, req.body.training_week, req.body.goal_start_date, req.body.goal, req.body.goal_progress,  req.body.goal_completion_date, req.body.all_goal_completion, req.body.published);
     res.redirect('/');
    } 
 
@@ -63,6 +73,31 @@ exports.post_new_entry = function(req, res) {
     
     
     }
+
+    exports.show_training_week = function(req, res)
+    {
+        console.log('filtering by week', req.body.training_week); 
+     
+        let week = req.body.training_week;
+        db.getTrainingWeek(week).then((entries) => {
+        res.render('planner', {
+        'title': 'Filtered Weeks',
+        
+        'entries': entries
+        });
+        }).catch((err) => {
+        console.log('error handling author posts', err);
+        }); 
+     
+     
+     }
+
+
+
+
+
+
+
     exports.delete_entry = function(req, res) {
         console.log('id in delete_entry', req.params.id);
         res.redirect('/');
@@ -77,7 +112,7 @@ exports.login = function(req, res){
 }
 
 exports.post_login = function(req, res) {
-    response.redirect("/");
+    res.redirect("/");
    }; 
 
 exports.register = function(req, res){

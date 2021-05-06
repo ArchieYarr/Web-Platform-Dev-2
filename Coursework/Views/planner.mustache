@@ -17,6 +17,10 @@ bootstrap/4.4.1/css/bootstrap.min.css">
       add
     </a>
   
+<a href="/SortWeek" class="btn btn-primary">
+      sort by week
+    </a>
+
    <div class="text-right" style="margin-bo@om: 1em;">
  {{^user}}
  <a id="login" href="/login" class="btn btn-primary">
@@ -27,11 +31,11 @@ bootstrap/4.4.1/css/bootstrap.min.css">
  </a>
  
  {{/user}}
- {{#user}}
+ 
  <a id="logout" href="/logout" class="btn btn-primary">
  Sign out
  </a>
- {{/user}}
+
  </div>
   
     
@@ -50,29 +54,11 @@ bootstrap/4.4.1/css/bootstrap.min.css">
      Start date of Goals:
      {{goal_start_date}}
      <br>
-    <b> Goal 1:</b>
-     {{first_goal}}
+    <b> Goal:</b>
+     {{goal}}
      <br>
-    <b> Goal 2:</b>
-     {{second_goal}}
-     <br>
-    <b> Goal 3:</b>
-     {{third_goal}}
-     <br>
-     Additional Goals:
-     {{additional_goal}}
-     <br>
-    <b> Goal 1 Progress:</b>
-     {{first_goal_progress}}
-     <br>
-    <b> Goal 2 Progress:</b>
-     {{second_goal_progres}}
-     <br>
-    <b> Goal 3 progress:</b>
-     {{third_goal_progress}}
-     <br>
-     Additional Goals progress:
-     {{additional_goal_progress}}
+    <b> Goal Progress:</b>
+     {{goal_progress}}
      <br>
      Date of all goals completion:
      {{goal_completion_date}}

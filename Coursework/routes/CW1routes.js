@@ -10,6 +10,8 @@ router.get("/", controller.landing_page);
 
 router.get("/add" , ensureLoggedIn('/login'),controller.add);
 router.get("/edit",controller.edit);
+router.get("/sortWeek",controller.sortWeek);
+router.post("/sortWeek", controller.show_training_week);
 router.get("/login", controller.login);
 router.post("/login", auth.authorize("/login"), controller.post_login);
 router.get("/register", controller.register);
