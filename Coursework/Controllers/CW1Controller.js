@@ -33,7 +33,7 @@ exports.remove = function(req, res){
 }
 exports.login = function(req, res){
      db.getAllEntries().then((entries)=> {
-        res.render('login', {
+        res.render('user/login', {
             'title': 'Login',
             'entries': entries
         });
@@ -41,7 +41,7 @@ exports.login = function(req, res){
 }
 
 exports.register = function(req, res){
-    res.render('register', {
+    res.render('user/register', {
 
         'title': 'register',
        
