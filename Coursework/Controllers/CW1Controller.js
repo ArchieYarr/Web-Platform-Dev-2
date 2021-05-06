@@ -1,5 +1,9 @@
+
 const plannerDAO = require('../Models/CW1Model'); 
 const db = new plannerDAO('dbFilePath.db');
+
+const UserDAO = require('../Models/userModel'); 
+//const db = new UserDAO('dbFilePath.db');
 db.init();
 
 exports.landing_page = function(req, res) {
@@ -31,22 +35,7 @@ exports.remove = function(req, res){
         
 });
 }
-exports.login = function(req, res){
-     db.getAllEntries().then((entries)=> {
-        res.render('user/login', {
-            'title': 'Login',
-            'entries': entries
-        });
-    })
-}
 
-exports.register = function(req, res){
-    res.render('user/register', {
-
-        'title': 'register',
-       
-    });
-}
 
 exports.post_new_entry = function(req, res) {
     
@@ -78,4 +67,42 @@ exports.post_new_entry = function(req, res) {
         res.redirect('/');
         db.deleteEntry(req.params.id); 
         } 
-//comment
+//below are callbacks for the registration and login process
+
+exports.login = function(req, res){
+    
+       res.render('user/login'); 
+          
+}
+
+exports.post_login = function(req, res) {
+    response.redirect("/");
+   }; 
+
+exports.register = function(req, res){
+   res.render('user/register', {
+
+       'title': 'register',
+      
+   });
+}
+
+
+exports.post_new_user = function(req, res) {
+    const user = req.body.username;
+    const password = req.body.pass;
+    console.log("register user", user, "password", password);
+    if (!user || !password) {
+    res.send(401, 'no user or no password');
+    return;
+    }
+    UserDAO.lookup(user, function(err, u) {
+    if (u) {
+    res.send(401, "User exists:", user);
+    return;
+    }
+    UserDAO.create(user, password);
+    res.redirect('/login');
+    });
+   } 
+

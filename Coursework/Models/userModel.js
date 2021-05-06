@@ -1,24 +1,26 @@
 const Datastore = require("nedb");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+
 class UserDAO {
  constructor(dbFilePath) {
  if (dbFilePath) {
  //embedded
- this.db = new Datastore({ filename: dbFilePath,
-autoload: true });
+ this.db = new Datastore({ filename: dbFilePath, autoload: true });
  } else {
 
  //in memory
  this.db = new Datastore();
+ console.log('running in memory');
  }
  }
+ 
  // for the demo the password is the bcrypt of the user name
  init() {
  this.db.insert({
  user: 'Peter',
  password:
-'$2b$10$I82WRFuGghOMjtu3LLZW9OAMrmYOlMZjEEkh.vx.K2MM05iu5hY2C'
+'12345678'
  });
  //console.log('user record inserted in init');
 
@@ -36,7 +38,7 @@ autoload: true });
  user: username,
  password: hash,
  };
- //console.log('user entry is: ', entry);
+ console.log('user entry is: ', entry);
 
  that.db.insert(entry, function (err) {
  if (err) {
