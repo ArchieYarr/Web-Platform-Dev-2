@@ -9,7 +9,7 @@ db.init();
 exports.landing_page = function(req, res) {
     db.getAllEntries().then((entries)=> {
         res.render('planner', {
-            'title': 'planner',
+            'title': 'Activity Planner',
             'entries': entries
         });
     })

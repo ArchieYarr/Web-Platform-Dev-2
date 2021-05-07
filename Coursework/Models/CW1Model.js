@@ -20,7 +20,7 @@ constructor(dbFilePath){
 
 
 init(){
-      this.db.insert({
+      /*this.db.insert({
     Author: 'Author',
     training_week: 'training_week',
     goal_start_date: 'goal_start_date',
@@ -28,7 +28,7 @@ init(){
     goal_progress: 'goal_progress',
     goal_completion_date: 'goal_completion_date',
     all_goal_completion: 'all_goal_completion'
-      });
+      });*/
 }
 
 getAllEntries(){
