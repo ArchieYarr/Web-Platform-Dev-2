@@ -7,6 +7,39 @@
   <a href="/" class="btn btn-primary">
       Planner
     </a>
+
+     <form method="post" role="form" action="">
+
+
+  <div class="form-group">
+    <label for="_id"><b>ID</b></label>
+    <input type="text" class="form-control" id="_id"
+           name="_id" placeholder="Enter the ID of the goal you want to edit" required>
+  </div>
+
+<div class="form-group">
+    <label for="field_name"><b>Value to be changed</b></label>
+    <select name="parameter" class="form-control" id="parameter">
+    <option value="Author">Author</option>
+    <option value="training_week">Training Week</option>
+    <option value="goal_start_date">Goal Start Date</option>
+    <option value="goal">Goal</option>
+    <option value="goal_progress">Goal Progress</option>
+    <option value="goal_completion_date">Goal Completion Date</option>
+    <option value="all_goal_completion">Completion Status</option>
+    </select>
+  </div>
+
+<div class="form-group">
+    <label for="new_val"><b>Corrected Value</b></label>
+    <input type="text" class="form-control" id="new_val"
+           name="new_val" placeholder="Enter the new value" required>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Submit Edit" class="btn btn-primary">
+  </div>
+</form>
     
 </body>
 </html>

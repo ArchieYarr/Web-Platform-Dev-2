@@ -27,11 +27,17 @@ exports.add = function(req, res){
 //instructions for how to respond to an edit page request (renders the editEntries page)
 exports.edit = function(req, res){
     res.render('editEntries', {
-        'title': 'editEntries',
+        'title': 'Edit Goal by Goal ID',
         
 });
 
 
+}
+
+exports.post_edit = function(req, res){
+
+db.editMethod(req.body._id, req.body.parameter, req.body.new_val)
+res.redirect("/");
 }
 
 //instructions for how to respond to a sortWeek page request (renders the sortWeek page)
@@ -46,7 +52,7 @@ exports.sortWeek = function(req, res){
 exports.post_new_entry = function(req, res) {
     
     
-    db.addGoal(req.body.Author, req.body.training_week, req.body.goal_start_date, req.body.goal, req.body.goal_progress,  req.body.goal_completion_date, req.body.all_goal_completion, req.body.published);
+    db.addGoal(req.body.Author, req.body.training_week, req.body.goal_start_date, req.body.goal, req.body.goal_progress,  req.body.goal_completion_date, req.body.all_goal_completion, req.body._id, req.body.published);
     res.redirect('/');
    } 
 
@@ -90,17 +96,13 @@ exports.post_new_entry = function(req, res) {
      }
 
 
-
-
-
-
 //instructions on how to deal with a delete request when the trash icon is selected (references the deleteEntry method in the model)
     exports.delete_entry = function(req, res) {
         console.log('id in delete_entry', req.params.id);
         res.redirect('/');
         db.deleteEntry(req.params.id); 
         }
-         
+
 //below are callbacks for the registration and login process
 
 exports.login = function(req, res){

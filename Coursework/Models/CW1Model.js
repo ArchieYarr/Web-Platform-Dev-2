@@ -40,7 +40,7 @@ getAllEntries(){
 }
 
 //used in the add goal page to add the listed key pairs to the database file when requested
-addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_completion_date, all_goal_completion) {
+addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_completion_date, all_goal_completion, _id) {
     var entry = {
     Author: Author,
     training_week: training_week,
@@ -49,6 +49,7 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
     goal_progress: goal_progress,
     goal_completion_date: goal_completion_date,
     all_goal_completion: all_goal_completion,
+    _id : _id,
     published: new Date().toISOString().split('T')[0]
     }
     
@@ -105,8 +106,25 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
             })
             } 
 
+editMethod(_id,parameter, new_val){
 
+    if (parameter == "training_week"){
+        this.db.update({_id: _id}, {$set: {training_week: new_val}}, {multi: false}, function(err){});
+        }else if (parameter == "Author"){
+            this.db.update({_id: _id}, {$set: {Author: new_val}}, {multi: true}, function(err){});
+        }else if (parameter == "goal_start_date"){
+            this.db.update({_id: _id}, {$set: {goal_start_date: new_val}}, {multi: true}, function(err){});
+        }else if (parameter == "goal"){
+            this.db.update({_id: _id}, {$set: {goal: new_val}}, {multi: true}, function(err){});
+        }else if (parameter == "goal_progress"){
+            this.db.update({_id: _id}, {$set: {goal_progress: new_val}}, {multi: true}, function(err){});
+        }else if (parameter == "goal_completion_date"){
+            this.db.update({_id: _id}, {$set: {goal_completion_date: new_val}}, {multi: true}, function(err){});
+        }else if (parameter == "all_goal_completion"){
+            this.db.update({_id: _id}, {$set: {all_goal_completion: new_val}}, {multi: true}, function(err){});
+}
 
+}
 
 
 
