@@ -1,3 +1,4 @@
+//package and file imports to give routes access to information (i.e. methods in the controller and model)
 const express = require('express');
 const controller = require('../controllers/CW1Controller.js');
 const auth = require('../auth/auth');

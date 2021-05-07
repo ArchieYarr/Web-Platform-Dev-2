@@ -1,3 +1,4 @@
+//package and file imports to give index access to information (i.e. methods in the controller, model and routes)
 const express = require('express');
 const session = require('express-session');
 const router = require('./routes/CW1routes');
