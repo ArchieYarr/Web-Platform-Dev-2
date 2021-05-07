@@ -6,6 +6,7 @@ const UserDAO = require('../Models/userModel');
 
 db.init();
 
+//instructions for how to respond to a landing page request (references model)
 exports.landing_page = function(req, res) {
     db.getAllEntries().then((entries)=> {
         res.render('planner', {
@@ -15,7 +16,7 @@ exports.landing_page = function(req, res) {
     })
     } 
 
-
+//instructions for how to respond to an add page request (renders the addEntries page, ensuring that a user is logged in)
 exports.add = function(req, res){
     res.render('addEntries', {
         'title': 'addEntries',
@@ -23,6 +24,7 @@ exports.add = function(req, res){
 });
 }
 
+//instructions for how to respond to an edit page request (renders the editEntries page)
 exports.edit = function(req, res){
     res.render('editEntries', {
         'title': 'editEntries',
@@ -32,6 +34,7 @@ exports.edit = function(req, res){
 
 }
 
+//instructions for how to respond to a sortWeek page request (renders the sortWeek page)
 exports.sortWeek = function(req, res){
     res.render('sortWeek', {
         'title': 'Sort by Week',
@@ -39,14 +42,7 @@ exports.sortWeek = function(req, res){
 });
 }
 
-exports.remove = function(req, res){
-    res.render('removeEntries', {
-        'title': 'removeEntries',
-        
-});
-}
-
-
+//instructions for how to respond to an addGoal request (references the addGoal method in the model and redirects to the landing page on completion)
 exports.post_new_entry = function(req, res) {
     
     
@@ -55,7 +51,7 @@ exports.post_new_entry = function(req, res) {
    } 
 
   
-
+//instructions for how to respond to a filter request (references the getEntriesProgress method in the model and renders the planner with the new filter applied)
     exports.show_user_completion = function(req, res)
    {
        console.log('filtering by goal completion', req.params.all_goal_completion); 
@@ -74,6 +70,7 @@ exports.post_new_entry = function(req, res) {
     
     }
 
+    //instructions for how to respond to a 'sort by week' request (references getTrainingWeek in the model and shows the landing page with only goals from a certain week)
     exports.show_training_week = function(req, res)
     {
         console.log('filtering by week', req.body.training_week); 
@@ -97,12 +94,13 @@ exports.post_new_entry = function(req, res) {
 
 
 
-
+//instructions on how to deal with a delete request when the trash icon is selected (references the deleteEntry method in the model)
     exports.delete_entry = function(req, res) {
         console.log('id in delete_entry', req.params.id);
         res.redirect('/');
         db.deleteEntry(req.params.id); 
-        } 
+        }
+         
 //below are callbacks for the registration and login process
 
 exports.login = function(req, res){

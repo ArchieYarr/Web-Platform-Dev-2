@@ -17,17 +17,21 @@ class UserDAO {
  
  // for the demo the password is the bcrypt of the user name
  init() {
- this.db.insert({
+//2 dummy insert statements that could be utilised for testing if the register function was not working properly
+ /*this.db.insert({
  user: 'Peter',
  password:
 '12345678'
- });
+ });*/
  //console.log('user record inserted in init');
 
- this.db.insert({
+ /*this.db.insert({
  user: 'Ann',
  password: '$2b$10$bnEYkqZM.MhEF/LycycymOeVwkQONq8kuAUGx6G5tF9UtUcaYDs3S'
  });
+
+ */
+
  //console.log('user record inserted in init');
  return this;
  }
