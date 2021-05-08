@@ -20,7 +20,7 @@ exports.landing_page = function(req, res) {
 exports.add = function(req, res){
     res.render('addEntries', {
         'title': 'addEntries',
-        'user': req.user
+        'user': req.user.user
 });
 }
 
