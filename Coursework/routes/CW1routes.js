@@ -10,12 +10,11 @@ router.get("/", controller.landing_page);
    module.exports = router;
 //Routes for adding, editing and sorting goals
 router.get("/add" , ensureLoggedIn('/login'),controller.add);
+router.post('/add', controller.post_new_entry); 
 router.get("/edit",controller.edit);
 router.post('/edit', controller.post_edit);
 router.get("/sortWeek", ensureLoggedIn('/login'),controller.sortWeek);
 router.post("/sortWeek", ensureLoggedIn('/login'),  controller.show_training_week);
-router.get('/add', controller.add);
-router.post('/add', controller.post_new_entry); 
 router.get('/delete/:id', controller.delete_entry); 
 //Routes for logging in, registering, logging out and filtering complete, incomplete and in progress goals
 router.get("/login", controller.login);
