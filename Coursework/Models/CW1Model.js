@@ -38,7 +38,19 @@ getAllEntries(user){
     })
 })
 }
-
+getEntriesByFilter(user, training_goal){
+    return new Promise((resolve, reject) => {
+    this.db.find({Author: user, training_goal:training_goal}, function(err, entries){
+        if(err){
+                reject(err);
+                console.log('Promise in getAllEntries rejected');
+        }else{
+                resolve(entries);
+                console.log('promise in getAllEntries resolved', entries);
+        }
+    })
+})
+}
 //used in the add goal page to add the listed key pairs to the database file when requested
 addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_completion_date, all_goal_completion, _id) {
     var entry = {

@@ -81,7 +81,7 @@ exports.post_new_entry = function(req, res) {
         console.log('filtering user' , req.body.username_selected);
         
         db.getTrainingWeek(req.body.training_week, req.body.username_selected).then((entries) => {
-        res.render('planner', {
+        res.render('SortedPlanner', {
         'title': 'Filtered Weeks',
         
         'entries': entries
@@ -160,7 +160,7 @@ exports.post_new_user = function(req, res) {
 //callback for the shareable link
 
 exports.shareable_link = function(req, res) {
-    db.getAllEntries(req.query.user).then((entries)=> {
+    db.getEntriesByFilter(req.query.user, req.query.training_week).then((entries)=> {
         res.render('SharedPlanner', {
             'user': req.query.user,
             'title':'s Activity Planner',

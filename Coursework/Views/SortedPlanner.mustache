@@ -21,6 +21,13 @@ bootstrap/4.4.1/css/bootstrap.min.css">
       sort by week
     </a>
 
+<a href="/planner" class="btn btn-primary">
+      Planner
+    </a>
+
+<button onclick = "sendable_link()" class = "btn btn-primary">
+Share your goals for  the week
+</button>
    <div class="text-right" style="margin-bo@om: 1em;">
  
  
@@ -66,6 +73,10 @@ bootstrap/4.4.1/css/bootstrap.min.css">
  {{^entries}}no entries yet {{/entries}}
 
 
-
+ <script>
+ function sendable_link(){
+   alert("http://localhost:3000/planner/shareableLink?user={{user}}&training_week={{training_week}}")
+ }
+ </script>
  </body>
 </html>
