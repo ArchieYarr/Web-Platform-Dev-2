@@ -84,7 +84,9 @@ exports.post_new_entry = function(req, res) {
         res.render('SortedPlanner', {
         'title': 'Filtered Weeks',
         
-        'entries': entries
+        'entries': entries,
+        'user': req.body.username_selected,
+        'training_week':req.body.training_week
         });
         }).catch((err) => {
         console.log('error handling author posts', err);
@@ -162,10 +164,13 @@ exports.post_new_user = function(req, res) {
 exports.shareable_link = function(req, res) {
     db.getEntriesByFilter(req.query.user, req.query.training_week).then((entries)=> {
         res.render('SharedPlanner', {
-            'user': req.query.user,
+            
             'title':'s Activity Planner',
             
-            'entries': entries
+            'entries': entries,
+            'user': req.query.user,
+            'training_week': req.query.training_week
+
         });
     })
 

@@ -38,9 +38,10 @@ getAllEntries(user){
     })
 })
 }
-getEntriesByFilter(user, training_goal){
+getEntriesByFilter(user, training_week){
     return new Promise((resolve, reject) => {
-    this.db.find({Author: user, training_goal:training_goal}, function(err, entries){
+        console.log('user is', training_goal);
+    this.db.find({Author: user, training_week:training_week}, function(err, entries){
         if(err){
                 reject(err);
                 console.log('Promise in getAllEntries rejected');
