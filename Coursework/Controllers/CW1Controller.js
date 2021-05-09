@@ -57,9 +57,7 @@ exports.post_new_entry = function(req, res) {
 //instructions for how to respond to a filter request (references the getEntriesProgress method in the model and renders the planner with the new filter applied)
     exports.show_user_completion = function(req, res)
    {
-       console.log('filtering by goal completion', req.params.all_goal_completion); 
-       console.log('filtering by goal completion', req.params.Author); 
-       console.log('filtering by goal completion', req.params.training_week); 
+       
        
        db.getEntriesProgress(req.params.all_goal_completion, req.params.Author, req.params.training_week).then((entries) => {
        res.render('planner', {
