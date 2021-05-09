@@ -110,6 +110,9 @@ exports.login = function(req, res){
 }
 
 exports.post_login = function(req, res) {
+    res.redirect('/planner');
+   }; 
+exports.render_planner = function(req, res){
     console.log('passed username is', req.user.user);
     db.getAllEntries(req.user.user).then((entries)=> {
         res.render('planner', {
@@ -119,8 +122,7 @@ exports.post_login = function(req, res) {
             'entries': entries
         });
     })
-   }; 
-
+}
 
 
 exports.register = function(req, res){

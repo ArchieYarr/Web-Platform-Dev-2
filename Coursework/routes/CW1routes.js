@@ -20,7 +20,7 @@ router.get('/delete/:id', controller.delete_entry);
 //Routes for logging in, registering, logging out and filtering complete, incomplete and in progress goals
 router.get("/login", controller.login);
 router.post("/login", auth.authorize("/login"), controller.post_login);
-router.get("/planner", controller.post_login)
+router.get("/planner", controller.render_planner)
 router.get("/register", controller.register);
 router.post('/register', controller.post_new_user); 
 router.get("/logout", controller.logout); 
