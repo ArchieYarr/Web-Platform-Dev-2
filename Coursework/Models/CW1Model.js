@@ -40,7 +40,7 @@ getAllEntries(user){
 }
 getEntriesByFilter(user, training_week){
     return new Promise((resolve, reject) => {
-        console.log('user is', training_goal);
+        console.log('user is', training_week);
     this.db.find({Author: user, training_week:training_week}, function(err, entries){
         if(err){
                 reject(err);
