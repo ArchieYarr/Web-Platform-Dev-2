@@ -5,15 +5,15 @@
 <body class="container">
 
 <h1>{{title}}</h1>
-<a href="/" class="btn btn-primary">
+<a href="/planner" class="btn btn-primary">
       Planner
     </a>
 <form method="post" role="form" >
 
  <div class="form-group">
     <label for="training_week">Training Week</label>
-    <input type="text" class="form-control" id="training_week"
-    name="training_week" placeholder="Enter Week Number 1-52" required>
+    <input type="text" class="form-control" id="training_week" name="training_week" placeholder="Enter Week Number 1-52" required>
+    <input type = "hidden" name = "username_selected" id = "username_selected" value = {{user}}>
  </div>
 
 <div class="form-group">

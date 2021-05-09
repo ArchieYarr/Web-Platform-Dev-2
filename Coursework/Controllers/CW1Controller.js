@@ -8,12 +8,8 @@ db.init();
 
 //instructions for how to respond to a landing page request (references model)
 exports.landing_page = function(req, res) {
-    db.getAllEntries().then((entries)=> {
-        res.render('planner', {
-            'title': 'Activity Planner',
-            'entries': entries
-        });
-    })
+    
+    res.render('user/login'); 
     } 
 
 //instructions for how to respond to an add page request (renders the addEntries page, ensuring that a user is logged in)
@@ -37,13 +33,14 @@ exports.edit = function(req, res){
 exports.post_edit = function(req, res){
 
 db.editMethod(req.body._id, req.body.parameter, req.body.new_val)
-res.redirect("/");
+res.redirect("/planner");
 }
 
 //instructions for how to respond to a sortWeek page request (renders the sortWeek page)
 exports.sortWeek = function(req, res){
     res.render('sortWeek', {
         'title': 'Sort by Week',
+        "user": req.user.user
         
 });
 }
@@ -53,7 +50,7 @@ exports.post_new_entry = function(req, res) {
     
     
     db.addGoal(req.body.Author, req.body.training_week, req.body.goal_start_date, req.body.goal, req.body.goal_progress,  req.body.goal_completion_date, req.body.all_goal_completion, req.body._id, req.body.published);
-    res.redirect('/');
+    res.redirect('/planner');
    } 
 
   
@@ -61,9 +58,10 @@ exports.post_new_entry = function(req, res) {
     exports.show_user_completion = function(req, res)
    {
        console.log('filtering by goal completion', req.params.all_goal_completion); 
-    
-       let completion = req.params.all_goal_completion;
-       db.getEntriesProgress(completion).then((entries) => {
+       console.log('filtering by goal completion', req.params.Author); 
+       console.log('filtering by goal completion', req.params.training_week); 
+       
+       db.getEntriesProgress(req.params.all_goal_completion, req.params.Author, req.params.training_week).then((entries) => {
        res.render('planner', {
        'title': 'Filtered Goal Progress',
        
@@ -80,9 +78,9 @@ exports.post_new_entry = function(req, res) {
     exports.show_training_week = function(req, res)
     {
         console.log('filtering by week', req.body.training_week); 
-     
-        let week = req.body.training_week;
-        db.getTrainingWeek(week).then((entries) => {
+        console.log('filtering user' , req.body.username_selected);
+        
+        db.getTrainingWeek(req.body.training_week, req.body.username_selected).then((entries) => {
         res.render('planner', {
         'title': 'Filtered Weeks',
         
@@ -99,7 +97,7 @@ exports.post_new_entry = function(req, res) {
 //instructions on how to deal with a delete request when the trash icon is selected (references the deleteEntry method in the model)
     exports.delete_entry = function(req, res) {
         console.log('id in delete_entry', req.params.id);
-        res.redirect('/');
+        res.redirect('/planner');
         db.deleteEntry(req.params.id); 
         }
 
@@ -112,8 +110,19 @@ exports.login = function(req, res){
 }
 
 exports.post_login = function(req, res) {
-    res.redirect("/");
+    db.getAllEntries().then((entries)=> {
+        res.render('planner', {
+            //'user': 
+            'title':'s Activity Planner',
+            'entries': entries
+        });
+    })
    }; 
+
+/*exports.planner = function(req, res){
+    res.redirect("/planner");
+
+}*/
 
 exports.register = function(req, res){
    res.render('user/register', {

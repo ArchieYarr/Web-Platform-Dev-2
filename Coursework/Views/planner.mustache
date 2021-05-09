@@ -8,7 +8,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body class = "container">
 
- <h1>{{title}}</h1>
+ <h1>{{user}}{{title}}</h1>
 
  <a href="/edit" class="btn btn-primary">
       Edit
@@ -22,15 +22,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
     </a>
 
    <div class="text-right" style="margin-bo@om: 1em;">
- {{^user}}
- <a id="login" href="/login" class="btn btn-primary">
- Sign in
- </a>
- <a id="login" href="/register" class="btn btn-primary">
- Register
- </a>
  
- {{/user}}
  
  <a id="logout" href="/logout" class="btn btn-primary">
  Sign out
@@ -64,7 +56,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
      {{goal_completion_date}}
      <br>
      All goals completion status:
-     <a href="/progress/{{all_goal_completion}}" >{{all_goal_completion}}</a>
+     <a href="/progress/{{all_goal_completion}}/{{Author}}/{{training_week}}" >{{all_goal_completion}}</a>
     
       </div>
       </div>

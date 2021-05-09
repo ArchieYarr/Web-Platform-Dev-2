@@ -55,7 +55,7 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
     
     this.db.insert(entry, function(err, doc) {
     if (err) {
-    console.log('Error inserting document', subject);
+    console.log('Error inserting document');
     } else {
     console.log('document inserted into the database', doc);
     }
@@ -65,9 +65,9 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
    
 
 //used on the landing page and its variations to filter goals by their completion status
-        getEntriesProgress(all_goal_completion) {
+        getEntriesProgress(all_goal_completion, Author, training_week) {
             return new Promise((resolve, reject) => {
-            this.db.find({ 'all_goal_completion': all_goal_completion }, function(err, entries) {
+            this.db.find({ 'all_goal_completion': all_goal_completion, Author: Author, training_week: training_week }, function(err, entries) {
             if (err) {
             reject(err);
             } else {
@@ -78,9 +78,9 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
             })
             } 
 //Used on the filter by trainig week page to filter the database entries by the training_week field to show goals for a certain week
-            getTrainingWeek(training_week) {
+            getTrainingWeek(training_week, username_selected) {
                 return new Promise((resolve, reject) => {
-                this.db.find({ training_week: training_week }, function(err, entries) {
+                this.db.find({ training_week: training_week, "Author" : username_selected }, function(err, entries) {
                 if (err) {
                 reject(err);
                 } else {
