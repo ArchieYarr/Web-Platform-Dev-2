@@ -25,15 +25,15 @@ init(){
 }
 
 //used in the landing page to render all of the entries in the database file
-getAllEntries(){
+getAllEntries(user){
     return new Promise((resolve, reject) => {
-    this.db.find({}, function(err, entries){
+    this.db.find({Author: user}, function(err, entries){
         if(err){
                 reject(err);
                 console.log('Promise in getAllEntries rejected');
         }else{
                 resolve(entries);
-                //console.log('promise in getAllEntries resolved');
+                console.log('promise in getAllEntries resolved', entries);
         }
     })
 })
@@ -106,6 +106,8 @@ addGoal(Author, training_week, goal_start_date, goal, goal_progress,  goal_compl
             })
             } 
 
+
+//code created with https://github.com/louischatriot/nedb the nedb documentation from this link as a source          
 editMethod(_id,parameter, new_val){
 
     if (parameter == "training_week"){

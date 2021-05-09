@@ -25,3 +25,6 @@ router.get("/register", controller.register);
 router.post('/register', controller.post_new_user); 
 router.get("/logout", controller.logout); 
 router.get('/progress/:all_goal_completion/:Author/:training_week', controller.show_user_completion);
+
+//link for the sharable link
+router.get("/planner/shareableLink", controller.shareable_link);

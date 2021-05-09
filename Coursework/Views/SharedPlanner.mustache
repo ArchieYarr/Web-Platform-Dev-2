@@ -10,27 +10,7 @@ bootstrap/4.4.1/css/bootstrap.min.css">
 
  <h1>{{user}}{{title}}</h1>
 
- <a href="/edit" class="btn btn-primary">
-      Edit
-    </a>
-    <a href="/add" class="btn btn-primary">
-      add
-    </a>
-  
-<a href="/SortWeek" class="btn btn-primary">
-      sort by week
-    </a>
-<button onclick = "sendable_link()" class = "btn btn-primary">
-Share your planner
-</button>
-   <div class="text-right" style="margin-bo@om: 1em;">
  
- 
- <a id="logout" href="/logout" class="btn btn-primary">
- Sign out
- </a>
-
- </div>
   
     
  {{#entries}}
@@ -58,20 +38,16 @@ Share your planner
      {{goal_completion_date}}
      <br>
      All goals completion status:
-     <a href="/progress/{{all_goal_completion}}/{{Author}}/{{training_week}}" >{{all_goal_completion}}</a>
+  {{all_goal_completion}}
     
       </div>
       </div>
-<a href='/delete/{{_id}}' alt='delete this entry'><i class='fa fa-trash' style='font-size:24px'></i></a>
+
 
  {{/entries}}
  {{^entries}}no entries yet {{/entries}}
 
 
- <script>
- function sendable_link(){
-   alert("http://localhost:3000/planner/shareableLink?user={{user}}")
- }
- </script>
+ 
  </body>
 </html>

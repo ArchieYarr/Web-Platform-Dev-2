@@ -110,19 +110,18 @@ exports.login = function(req, res){
 }
 
 exports.post_login = function(req, res) {
-    db.getAllEntries().then((entries)=> {
+    console.log('passed username is', req.user.user);
+    db.getAllEntries(req.user.user).then((entries)=> {
         res.render('planner', {
-            //'user': 
+            'user': req.user.user,
             'title':'s Activity Planner',
+            
             'entries': entries
         });
     })
    }; 
 
-/*exports.planner = function(req, res){
-    res.redirect("/planner");
 
-}*/
 
 exports.register = function(req, res){
    res.render('user/register', {
@@ -155,3 +154,17 @@ exports.post_new_user = function(req, res) {
     req.logout();
     res.redirect("/");
    }; 
+
+//callback for the shareable link
+
+exports.shareable_link = function(req, res) {
+    db.getAllEntries(req.query.user).then((entries)=> {
+        res.render('SharedPlanner', {
+            'user': req.query.user,
+            'title':'s Activity Planner',
+            
+            'entries': entries
+        });
+    })
+
+}
